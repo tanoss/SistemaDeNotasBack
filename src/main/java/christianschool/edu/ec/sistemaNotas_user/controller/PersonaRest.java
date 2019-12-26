@@ -8,16 +8,19 @@ package christianschool.edu.ec.sistemaNotas_user.controller;
 import christianschool.edu.ec.sistemaNotas_user.dao.PersonaRepository;
 import christianschool.edu.ec.sistemaNotas_user.dao.PersonaRepositoryRel;
 import christianschool.edu.ec.sistemaNotas_user.model.Persona;
+import christianschool.edu.ec.sistemaNotas_user.model.PersonaRel;
 import christianschool.edu.ec.sistemaNotas_user.model.segToken;
 import christianschool.edu.ec.sistemaNotas_user.util.cryptPassword;
 import christianschool.edu.ec.sistemaNotas_user.util.passToken;
 import christianschool.edu.ec.sistemaNotas_user.util.segMessage;
 import java.sql.SQLException;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -68,6 +71,46 @@ public class PersonaRest {
             return new ResponseEntity(user, HttpStatus.CREATED);
         }
     }
+    
+    //Funcion devuelve el rol del usuario
+    
+     //    Funcion buscar un perfil por el sisId
+// @RequestMapping(value = "/segps/{id}", method = RequestMethod.GET)
+// public ResponseEntity<SegPerfil> perfilesBySisId(@PathVariable long id) {
+//
+//  List<SegPerfil> perfilS = segPerfilRep.findBySisId(id);
+//  if (perfilS.isEmpty()) {
+//   return new ResponseEntity(msg.notfound(), HttpStatus.OK);
+//  } else {
+//   return new ResponseEntity(perfilS, HttpStatus.OK);
+//  }
+// }
+    //Devuelve el rol del usuario
+ @RequestMapping(value = "/role/{id}", method = RequestMethod.GET)
+ public ResponseEntity<Persona> roleUser(@PathVariable String id) {
+
+  Persona rol = personaRep.findUserByCedula(id);
+  if (rol != null) {
+   return new ResponseEntity(rol, HttpStatus.OK);
+  } else {
+   return new ResponseEntity(msg.notfound(), HttpStatus.OK);
+  }
+ }
+ 
+     //Devuelve el nombre del usuario
+ @RequestMapping(value = "/roles/{id}", method = RequestMethod.GET)
+ public ResponseEntity<PersonaRel> roleUsers(@PathVariable String id) {
+
+  PersonaRel rol = personaRepRel.findUserByCedula(id);
+  if (rol != null) {
+   return new ResponseEntity(rol, HttpStatus.OK);
+  } else {
+   return new ResponseEntity(msg.notfound(), HttpStatus.OK);
+  }
+ }
+    
+    
+    
 
 //     //Funcion para crear un profesor
 //    @RequestMapping(value = "/sisp", method = RequestMethod.POST)

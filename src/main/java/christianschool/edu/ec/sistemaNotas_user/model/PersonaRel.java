@@ -67,6 +67,31 @@ public class PersonaRel implements Serializable {
     @NotNull
     @Column(name = "CORREO")
     private String correo;
+    
+    @Basic(optional = false)
+    @Size(min = 1, max = 60)
+    @Column(name = "DIRECCION")
+    private String direccion;
+
+    @Basic(optional = false)
+    @Size(min = 1, max = 60)
+    @Column(name = "TELEFONO_CONVENCIONAL")
+    private String telefonoConvencional;
+
+    @Basic(optional = false)
+    @Size(min = 1, max = 60)
+    @Column(name = "TELEFONO_CELULAR")
+    private String telefonoCelular;
+
+    @Basic(optional = false)
+    @Size(min = 1, max = 60)
+    @Column(name = "REFERENCIA_PERS_NOMBRE")
+    private String referenciaPersNombre;
+             
+    @Basic(optional = false)
+    @Size(min = 1, max = 60)
+    @Column(name = "REFERENCIA_PERS_TELF")
+    private String referenciaPersTelf;
 
     @Basic(optional = false)
     @Size(min = 1, max = 60)
@@ -93,9 +118,6 @@ public class PersonaRel implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
-  
-
-    
 
     public String getCedula() {
         return cedula;
@@ -128,6 +150,48 @@ public class PersonaRel implements Serializable {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefonoConvencional() {
+        return telefonoConvencional;
+    }
+
+    public void setTelefonoConvencional(String telefonoConvencional) {
+        this.telefonoConvencional = telefonoConvencional;
+    }
+
+    public String getTelefonoCelular() {
+        return telefonoCelular;
+    }
+
+    public void setTelefonoCelular(String telefonoCelular) {
+        this.telefonoCelular = telefonoCelular;
+    }
+
+    public String getReferenciaPersNombre() {
+        return referenciaPersNombre;
+    }
+
+    public void setReferenciaPersNombre(String referenciaPersNombre) {
+        this.referenciaPersNombre = referenciaPersNombre;
+    }
+
+    public String getReferenciaPersTelf() {
+        return referenciaPersTelf;
+    }
+
+    public void setReferenciaPersTelf(String referenciaPersTelf) {
+        this.referenciaPersTelf = referenciaPersTelf;
+    }
+    
+    
 
     public String getClave() {
         return clave;

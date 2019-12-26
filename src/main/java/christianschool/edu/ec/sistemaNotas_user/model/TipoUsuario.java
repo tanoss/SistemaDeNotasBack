@@ -56,6 +56,8 @@ public class TipoUsuario implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
+    
+
    
      
      
