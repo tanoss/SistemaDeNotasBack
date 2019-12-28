@@ -88,7 +88,6 @@ public class PersonaRest {
     //Devuelve el rol del usuario
  @RequestMapping(value = "/role/{id}", method = RequestMethod.GET)
  public ResponseEntity<Persona> roleUser(@PathVariable String id) {
-
   Persona rol = personaRep.findUserByCedula(id);
   if (rol != null) {
    return new ResponseEntity(rol, HttpStatus.OK);
@@ -107,6 +106,14 @@ public class PersonaRest {
   } else {
    return new ResponseEntity(msg.notfound(), HttpStatus.OK);
   }
+ }
+ 
+   //Actualizar información de la persona 
+ //    Funcion Actualizar un perfil
+ @RequestMapping(value = "/editper", method = RequestMethod.PUT)
+ public ResponseEntity<Persona> actualizarPerfil(@Valid @RequestBody Persona perfilA) {
+  personaRep.save(perfilA);
+  return new ResponseEntity(msg.update(), HttpStatus.OK);
  }
     
     

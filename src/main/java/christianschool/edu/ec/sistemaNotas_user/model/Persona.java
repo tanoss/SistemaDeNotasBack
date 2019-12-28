@@ -61,33 +61,33 @@ public class Persona implements Serializable {
     private String apellido;
 
     @Basic(optional = false)
-    @Size(min = 1, max = 60)
+    
     @NotNull
     @Column(name = "CORREO")
     private String correo;
 
     @Basic(optional = false)
-    @Size(min = 1, max = 60)
+    
     @Column(name = "DIRECCION")
     private String direccion;
 
     @Basic(optional = false)
-    @Size(min = 1, max = 60)
+  
     @Column(name = "TELEFONO_CONVENCIONAL")
     private String telefonoConvencional;
 
     @Basic(optional = false)
-    @Size(min = 1, max = 60)
+   
     @Column(name = "TELEFONO_CELULAR")
     private String telefonoCelular;
 
     @Basic(optional = false)
-    @Size(min = 1, max = 60)
+    
     @Column(name = "REFERENCIA_PERS_NOMBRE")
     private String referenciaPersNombre;
              
     @Basic(optional = false)
-    @Size(min = 1, max = 60)
+    
     @Column(name = "REFERENCIA_PERS_TELF")
     private String referenciaPersTelf;
 
