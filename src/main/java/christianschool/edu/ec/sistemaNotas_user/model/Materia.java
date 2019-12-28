@@ -27,7 +27,7 @@ public class Materia implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_MATERIA")
     @Basic(optional = false)
     @Column(name = "ID_MATERIA")
-    private Long idPersona;
+    private Long idMateria;
     
     @Column(name = "MATERIA")
     private String materia;
@@ -36,12 +36,12 @@ public class Materia implements Serializable {
     @Column(name = "DESCRIPCION")
     private String descripcion;
     
-    public Long getIdPersona() {
-        return idPersona;
+    public Long getIdMateria() {
+        return idMateria;
     }
 
-    public void setIdPersona(Long idPersona) {
-        this.idPersona = idPersona;
+    public void setIdMateria(Long idMateria) {
+        this.idMateria = idMateria;
     }
 
     public String getMateria() {

@@ -9,5 +9,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface LibretaCalificacionesRepositoryRel extends CrudRepository<LibretaCalificacionesRel, Long> {
     @Query(value = "select * from libreta_calificaciones", nativeQuery = true)
     List<LibretaCalificacionesRel> findallLibretaCalificaciones();
-    LibretaCalificacionesRel findUserByidLibretaCalificaciones(Long idLibreta);
+    LibretaCalificacionesRel findUserByidLibreta(Long idLibreta);
 }

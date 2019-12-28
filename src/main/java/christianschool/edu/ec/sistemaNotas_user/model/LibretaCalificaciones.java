@@ -18,13 +18,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "LISTA_CALIFICACIONES")
+@Table(name = "LIBRETA_CALIFICACIONES")
 public class LibretaCalificaciones implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @SequenceGenerator(name = "SEQ_LISTA_CALIFICACIONES", sequenceName = "SEQ_LISTA_CALIFICACIONES", allocationSize = 1)
+    @SequenceGenerator(name = "SEQ_LIBRETA_CALIFICACIONES", sequenceName = "SEQ_LIBRETA_CALIFICACIONES", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_LISTA_CALIFICACIONES")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_LIBRETA_CALIFICACIONES")
     @Basic(optional = false)
     @Column(name = "ID_LIBRETA")
     private Long idLibreta;
