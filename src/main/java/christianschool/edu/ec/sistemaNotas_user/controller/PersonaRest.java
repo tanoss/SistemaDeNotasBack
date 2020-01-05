@@ -51,7 +51,7 @@ public class PersonaRest {
    
 
     //Metodo de creacion de un nuevo usuario Estudiante o profesor con clave encriptada 
-    @RequestMapping(value = "/addprofe", method = RequestMethod.POST)
+    @RequestMapping(value = "/addperson", method = RequestMethod.POST)
     public ResponseEntity<Persona> registerusu(@RequestBody Persona persona) throws SQLException {
         Persona userexist = new Persona();
         // userexist = usuarioRep.findUserByusuCc(usuario.getUsuCc());
@@ -66,11 +66,37 @@ public class PersonaRest {
             user.setNombre(persona.getNombre());
             user.setApellido(persona.getApellido());
             user.setCorreo(persona.getCorreo());
+            user.setDireccion(persona.getDireccion());
+            user.setTelefonoConvencional(persona.getTelefonoConvencional());
+            user.setTelefonoCelular(persona.getTelefonoCelular());
+            user.setReferenciaPersNombre(persona.getReferenciaPersNombre());
+            user.setReferenciaPersTelf(persona.getReferenciaPersTelf());
+            user.setCorreo(persona.getCorreo());
             user.setClave(api.md5(persona.getCedula()));
             user = personaRep.save(user);
             return new ResponseEntity(user, HttpStatus.CREATED);
         }
     }
+    
+    @RequestMapping(value = "/allprof", method = RequestMethod.GET)
+ public ResponseEntity<Persona> listaprofesores() {
+  List<Persona> profesores = personaRep.findallprofesores();
+  if (profesores.isEmpty()) {
+   return new ResponseEntity(msg.notfound(), HttpStatus.OK);
+  } else {
+   return new ResponseEntity(profesores, HttpStatus.OK);
+  }
+ }
+ 
+  @RequestMapping(value = "/allestudiantes", method = RequestMethod.GET)
+ public ResponseEntity<Persona> listaestudiantes() {
+  List<Persona> estudiantes = personaRep.findallestudents();
+  if (estudiantes.isEmpty()) {
+   return new ResponseEntity(msg.notfound(), HttpStatus.OK);
+  } else {
+   return new ResponseEntity(estudiantes, HttpStatus.OK);
+  }
+ }
     
     //Funcion devuelve el rol del usuario
     

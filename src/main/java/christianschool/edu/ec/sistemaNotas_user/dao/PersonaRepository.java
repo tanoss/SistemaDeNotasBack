@@ -19,5 +19,8 @@ public interface PersonaRepository extends CrudRepository<Persona, Long> {
     @Query(value = "select * from persona order by id_persona", nativeQuery = true)
     List<Persona> findallUser();
     Persona findUserByCedula(String cedula);
-
+    @Query(value = "select * from persona where id_tipo_usuario=3 order by nombre", nativeQuery = true)
+    List<Persona> findallestudents();
+    @Query(value = "select * from persona where id_tipo_usuario=2 order by nombre", nativeQuery = true)
+    List<Persona> findallprofesores();
 }
