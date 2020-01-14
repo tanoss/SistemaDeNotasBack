@@ -1,6 +1,5 @@
 
 package christianschool.edu.ec.sistemaNotas_user.model;
-
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
@@ -20,31 +19,36 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "MATERIA_DOCENTE")
-public class MateriaDocenteRel implements Serializable {
+@Table(name = "DOCENTE")
+public class DocenteRel implements Serializable{
     private static final long serialVersionUID = 1L;
 
-    @SequenceGenerator(name = "SEQ_MATERIA_DOCENTE", sequenceName = "SEQ_MATERIA_DOCENTE", allocationSize = 1)
+    @SequenceGenerator(name = "SEQ_DOCENTE", sequenceName = "SEQ_DOCENTE", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_MATERIA_DOCENTE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_DOCENTE")
     @Basic(optional = false)
-    @Column(name = "ID_MATERIA_DOCENTE")
-    private Long idMateriaDocente;
+    @Column(name = "ID_DOCENTE")
+    private Long idDocente;
 
     @JoinColumn(name = "ID_PERSONA", referencedColumnName = "ID_PERSONA")
     @ManyToOne(optional = false)
     private Persona persona;
 
-    @JoinColumn(name = "ID_MATERIA", referencedColumnName = "ID_MATERIA")
-    @ManyToOne(optional = false)
-    private Materia materia;
+    @Basic(optional = false)
+    @Size(min = 1, max = 150)
+    @NotNull
+    @Column(name = "ESPECIALIDAD")
+    private String especialidad;
 
-    public Long getIdMateriaDocente() {
-        return idMateriaDocente;
+    @Column(name = "ID_PERSONA")
+    private Long idPersona;
+
+    public Long getIdDocente() {
+        return idDocente;
     }
 
-    public void setIdMateriaDocente(Long idMateriaDocente) {
-        this.idMateriaDocente = idMateriaDocente;
+    public void setIdDocente(Long idDocente) {
+        this.idDocente = idDocente;
     }
 
     public Persona getPersona() {
@@ -55,12 +59,21 @@ public class MateriaDocenteRel implements Serializable {
         this.persona = persona;
     }
 
-    public Materia getMateria() {
-        return materia;
+    public String getEspecialidad() {
+        return especialidad;
     }
 
-    public void setMateria(Materia materia) {
-        this.materia = materia;
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
+
+    public Long getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(Long idPersona) {
+        this.idPersona = idPersona;
+    }
+
     
 }

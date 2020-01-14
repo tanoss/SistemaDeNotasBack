@@ -18,36 +18,38 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "CURSO_GRADO")
-public class CursoGrado implements Serializable {
+@Table(name = "ESTUDIANTE")
+public class Estudiante implements Serializable {
+    
     private static final long serialVersionUID = 1L;
 
-    @SequenceGenerator(name = "SEQ_CURSO_GRADO", sequenceName = "SEQ_CURSO_GRADO", allocationSize = 1)
+    @SequenceGenerator(name = "SEQ_ESTUDIANTE", sequenceName = "SEQ_ESTUDIANTE", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CURSO_GRADO")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ESTUDIANTE")
+
     @Basic(optional = false)
-    
-    @Column(name = "ID_CURSO_GRADO")
-    private Long idCursoGrado;
+    @Column(name = "ID_ESTUDIANTE")
+    private Long idEstudiante;
 
-    
-    @Column(name = "CURSO")
-    private Long curso;
+    @Column(name = "ID_PERSONA")
+    private Long idPersona;
 
-    public Long getIdCursoGrado() {
-        return idCursoGrado;
+    public Long getIdEstudiante() {
+        return idEstudiante;
     }
 
-    public void setIdCursoGrado(Long idCursoGrado) {
-        this.idCursoGrado = idCursoGrado;
+    public void setIdEstudiante(Long idEstudiante) {
+        this.idEstudiante = idEstudiante;
     }
 
-    public Long getCurso() {
-        return curso;
+    public Long getIdPersona() {
+        return idPersona;
     }
 
-    public void setCurso(Long curso) {
-        this.curso = curso;
+    public void setIdPersona(Long idPersona) {
+        this.idPersona = idPersona;
     }
 
+
+   
 }

@@ -1,6 +1,5 @@
 
 package christianschool.edu.ec.sistemaNotas_user.model;
-
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
@@ -20,34 +19,35 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "MATERIA_NOTAS")
-public class MateriaNotasRel implements Serializable {
+@Table(name = "MMATERIA_DOCENTE_GRADO")
+public class MateriaDocenteGradoRel implements Serializable{
     private static final long serialVersionUID = 1L;
 
-    @SequenceGenerator(name = "SEQ_MATERIA_NOTAS", sequenceName = "SEQ_MATERIA_NOTAS", allocationSize = 1)
+    @SequenceGenerator(name = "SEQ_MATERIA_DOCENTE_GRADO", sequenceName = "SEQ_MATERIA_DOCENTE_GRADO", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_MATERIA_NOTAS")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_MATERIA_DOCENTE_GRADO")
     @Basic(optional = false)
-    @Column(name = "ID_MATERIA_NOTAS")
-    private Long idMateriaNotas;
+    @Column(name = "ID_MATERIA_DOCENTE_GRADO")
+    private Long idMateriaDocenteGrado;
 
     @JoinColumn(name = "ID_MATERIA", referencedColumnName = "ID_MATERIA")
     @ManyToOne(optional = false)
     private Materia materia;
-    
-    @JoinColumn(name = "ID_NOTAS", referencedColumnName = "ID_NOTAS")
-    @ManyToOne(optional = false)
-    private Notas notas;
-    
-    @Column(name = "PROMEDIO")
-    private Long promedio;
 
-    public Long getIdMateriaNotas() {
-        return idMateriaNotas;
+    @JoinColumn(name = "ID_DOCENTE", referencedColumnName = "ID_DOCENTE")
+    @ManyToOne(optional = false)
+    private Docente docente;
+    
+    @JoinColumn(name = "ID_GRADO", referencedColumnName = "ID_GRADO")
+    @ManyToOne(optional = false)
+    private Grado grado;
+
+    public Long getIdMateriaDocenteGrado() {
+        return idMateriaDocenteGrado;
     }
 
-    public void setIdMateriaNotas(Long idMateriaNotas) {
-        this.idMateriaNotas = idMateriaNotas;
+    public void setIdMateriaDocenteGrado(Long idMateriaDocenteGrado) {
+        this.idMateriaDocenteGrado = idMateriaDocenteGrado;
     }
 
     public Materia getMateria() {
@@ -58,20 +58,21 @@ public class MateriaNotasRel implements Serializable {
         this.materia = materia;
     }
 
-    public Notas getNotas() {
-        return notas;
+    public Docente getDocente() {
+        return docente;
     }
 
-    public void setNotas(Notas notas) {
-        this.notas = notas;
+    public void setDocente(Docente docente) {
+        this.docente = docente;
     }
 
-    public Long getPromedio() {
-        return promedio;
+    public Grado getGrado() {
+        return grado;
     }
 
-    public void setPromedio(Long promedio) {
-        this.promedio = promedio;
+    public void setGrado(Grado grado) {
+        this.grado = grado;
     }
 
+   
 }

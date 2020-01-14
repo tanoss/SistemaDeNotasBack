@@ -19,20 +19,5 @@
       </group>
     </open-files>
     <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-      <group>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/dao/AUTOR.java</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/controller/Estudiante.java</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/dao/librorel.java</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/SistemaNotasAplication.java</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/resources/application.properties</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/model/LibroRel.java</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/model/LibretaCalificacionesRel.java</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/controller/PersonaRest.java</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/model/libro.java</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/model/estudiante.java</file>
-        <file>file:/C:/Users/willy/Desktop/Proyecto%20Integrador/BackEnd/SistemaDeNotasBack/src/main/java/christianschool/edu/ec/sistemaNotas_user/dao/LIBRO.java</file>
-      </group>
-    </open-files>
   </auxiliary>
 </gradle-project-properties>

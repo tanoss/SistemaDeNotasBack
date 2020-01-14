@@ -33,9 +33,6 @@ public class Materia implements Serializable {
     private String materia;
 
     
-    @Column(name = "DESCRIPCION")
-    private String descripcion;
-    
     public Long getIdMateria() {
         return idMateria;
     }
@@ -50,14 +47,6 @@ public class Materia implements Serializable {
 
     public void setMateria(String materia) {
         this.materia = materia;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
 }
