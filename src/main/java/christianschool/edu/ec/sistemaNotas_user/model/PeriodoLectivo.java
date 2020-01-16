@@ -26,7 +26,7 @@ public class PeriodoLectivo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PERIODO_LECTIVO")
     @Basic(optional = false)
-    @Column(name = "ID_PERIODO")
+    @Column(name = "ID_PERIODO_LECTIVO")
     private Long idPeriodo;
     
     @Column(name = "PERIODO")

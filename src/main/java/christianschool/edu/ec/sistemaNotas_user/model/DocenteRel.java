@@ -40,8 +40,7 @@ public class DocenteRel implements Serializable{
     @Column(name = "ESPECIALIDAD")
     private String especialidad;
 
-    @Column(name = "ID_PERSONA")
-    private Long idPersona;
+   
 
     public Long getIdDocente() {
         return idDocente;
@@ -67,13 +66,7 @@ public class DocenteRel implements Serializable{
         this.especialidad = especialidad;
     }
 
-    public Long getIdPersona() {
-        return idPersona;
-    }
-
-    public void setIdPersona(Long idPersona) {
-        this.idPersona = idPersona;
-    }
+    
 
     
 }

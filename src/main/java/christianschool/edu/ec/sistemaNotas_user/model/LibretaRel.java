@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -36,7 +37,7 @@ public class LibretaRel implements Serializable {
     private Clase clase;
     
     @JoinColumn(name = "ID_PERIODO_LECTIVO", referencedColumnName = "ID_PERIODO_LECTIVO")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private PeriodoLectivo periodoLectivo;
     
 

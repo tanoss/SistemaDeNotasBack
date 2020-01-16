@@ -34,7 +34,7 @@ public class Clase implements Serializable{
     @Column(name = "ID_MATRICULA")
     private Long idMatricula;
 
-    @Column(name = "ID_MATERIADOCENTEGRADO")
+    @Column(name = "ID_MATERIA_DOCENTE_GRADO")
     private Long idMateriaDocenteGrado;
 
     public Long getIdClase() {

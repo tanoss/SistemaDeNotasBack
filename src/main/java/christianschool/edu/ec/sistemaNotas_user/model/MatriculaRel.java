@@ -37,7 +37,7 @@ public class MatriculaRel implements Serializable {
     @Basic(optional = false)
     @Size(min = 1, max = 50)
     @NotNull
-    @Column(name = "CODIGOMATRICULA")
+    @Column(name = "COD_MATRICULA")
     private String codigoMatricula;
 
     public Long getIdMatricula() {
