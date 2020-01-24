@@ -10,6 +10,7 @@ public interface ParaleloRepository extends CrudRepository<Paralelo, Long>{
     @Query(value = "select * from paralelo", nativeQuery = true)
     List<Paralelo> findallParalelo();
     Paralelo findUserByidParalelo(Long idParalelo);
+    Paralelo findUserByparalelo(String paralelo);
 
     
 }
