@@ -5,7 +5,9 @@
  */
 package christianschool.edu.ec.sistemaNotas_user.controller;
 
+import christianschool.edu.ec.sistemaNotas_user.dao.GradoRepository;
 import christianschool.edu.ec.sistemaNotas_user.dao.ParaleloRepository;
+import christianschool.edu.ec.sistemaNotas_user.model.Grado;
 import christianschool.edu.ec.sistemaNotas_user.model.Paralelo;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,9 @@ public class MateriaRest {
 
     @Autowired
     private ParaleloRepository paraleloRep;
+    
+    @Autowired
+    private GradoRepository gradoRep;
 
     @RequestMapping(value = "/paralelo", method = RequestMethod.GET)
     public ResponseEntity<Paralelo> listaparalelo() {
@@ -54,6 +59,23 @@ public class MateriaRest {
             cparalelo = paraleloRep.save(cparalelo);
             return new ResponseEntity(cparalelo,HttpStatus.CREATED);
         }
+    }
+    
+    //listar cursos con paralelos
+    @RequestMapping(value= "/grado", method = RequestMethod.GET)
+    public ResponseEntity<Grado> listargradop(){
+        List<Grado> grad = gradoRep.allgrade();
+        return new ResponseEntity(grad, HttpStatus.OK);
+    }
+    
+    
+    //crear un Curso
+    @RequestMapping(value="/gradoadd" , method = RequestMethod.POST)
+    public ResponseEntity<Grado>crearcurso(@RequestBody Grado grado)throws SQLException{
+        Grado gradoc = new Grado();
+        gradoc.setIdParalelo(grado.getIdParalelo());
+        gradoc.setGrado(grado.getGrado());
+        return new ResponseEntity(gradoc,HttpStatus.CREATED);    
     }
     
     
