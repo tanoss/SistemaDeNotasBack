@@ -38,9 +38,9 @@ public class MateriaDocenteGradoRel implements Serializable{
     @ManyToOne(optional = false)
     private Docente docente;
     
-    @JoinColumn(name = "ID_GRADO", referencedColumnName = "ID_GRADO")
+    @JoinColumn(name = "ID_GRADO_PARALELO", referencedColumnName = "ID_GRADO_PARALELO")
     @ManyToOne(optional = false)
-    private Grado grado;
+    private GradoParalelo grado;
 
     public Long getIdMateriaDocenteGrado() {
         return idMateriaDocenteGrado;
@@ -66,13 +66,16 @@ public class MateriaDocenteGradoRel implements Serializable{
         this.docente = docente;
     }
 
-    public Grado getGrado() {
+    public GradoParalelo getGrado() {
         return grado;
     }
 
-    public void setGrado(Grado grado) {
+    public void setGrado(GradoParalelo grado) {
         this.grado = grado;
     }
+
+    
+    
 
    
 }

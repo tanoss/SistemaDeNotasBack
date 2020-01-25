@@ -5,9 +5,11 @@
  */
 package christianschool.edu.ec.sistemaNotas_user.controller;
 
+import christianschool.edu.ec.sistemaNotas_user.dao.GradoParaleloRepository;
 import christianschool.edu.ec.sistemaNotas_user.dao.GradoRepository;
 import christianschool.edu.ec.sistemaNotas_user.dao.ParaleloRepository;
 import christianschool.edu.ec.sistemaNotas_user.model.Grado;
+import christianschool.edu.ec.sistemaNotas_user.model.GradoParalelo;
 import christianschool.edu.ec.sistemaNotas_user.model.Paralelo;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import christianschool.edu.ec.sistemaNotas_user.util.segMessage;
 import java.sql.SQLException;
 import org.springframework.web.bind.annotation.RequestBody;
+
 /**
  *
  * @author willy
@@ -28,15 +31,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/sdn")
 public class MateriaRest {
-        
+
     private final segMessage mensaje = new segMessage();
 
     @Autowired
     private ParaleloRepository paraleloRep;
-    
+
     @Autowired
     private GradoRepository gradoRep;
 
+    @Autowired
+    private GradoParaleloRepository gradopRep;
+
+    //listar paralelelos
     @RequestMapping(value = "/paralelo", method = RequestMethod.GET)
     public ResponseEntity<Paralelo> listaparalelo() {
         List<Paralelo> paralelo = paraleloRep.findallParalelo();
@@ -46,38 +53,70 @@ public class MateriaRest {
             return new ResponseEntity(paralelo, HttpStatus.OK);
         }
     }
+
+    //Listar Grados
+    @RequestMapping(value = "/grado", method = RequestMethod.GET)
+    public ResponseEntity<Grado> listargrado() {
+        List<Grado> grado = gradoRep.allgrade();
+        if (grado.isEmpty()) {
+            return new ResponseEntity(mensaje.notfound(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity(grado, HttpStatus.OK);
+        }
+    }
+
+    //Listar grados con paralelos
+    @RequestMapping(value = "/gradop", method = RequestMethod.GET)
+    public ResponseEntity<GradoParalelo> listparalelogrado() {
+        List<GradoParalelo> gp = gradopRep.allgradep();
+        if (gp.isEmpty()) {
+            return new ResponseEntity(mensaje.notfound(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity(gp, HttpStatus.OK);
+        }
+    }
+
     //crear un paralelo
-    @RequestMapping(value="paraleloadd",method = RequestMethod.POST)
-    public ResponseEntity <Paralelo> crearparalelo(@RequestBody Paralelo paralelo) throws SQLException{
+    @RequestMapping(value = "paraleloadd", method = RequestMethod.POST)
+    public ResponseEntity<Paralelo> crearparalelo(@RequestBody Paralelo paralelo) throws SQLException {
         Paralelo existe = new Paralelo();
         existe = paraleloRep.findUserByparalelo(paralelo.getParalelo());
-        if(existe != null){
+        if (existe != null) {
             return new ResponseEntity(mensaje.ifexist(), HttpStatus.OK);
-        }else{
+        } else {
             Paralelo cparalelo = new Paralelo();
             cparalelo.setParalelo(paralelo.getParalelo());
             cparalelo = paraleloRep.save(cparalelo);
-            return new ResponseEntity(cparalelo,HttpStatus.CREATED);
+            return new ResponseEntity(mensaje.add(), HttpStatus.CREATED);
+        }
+    }
+
+
+    //crear un Curso
+    @RequestMapping(value = "/gradoadd", method = RequestMethod.POST)
+    public ResponseEntity<Grado> crearcurso(@RequestBody Grado grado) throws SQLException {
+        Grado existeg = new Grado();
+        existeg = gradoRep.findUserByGrado(grado.getGrado());
+        if (existeg != null) {
+            return new ResponseEntity(mensaje.ifexist(), HttpStatus.OK);
+        } else {
+            Grado gradoc = new Grado();
+            gradoc.setGrado(grado.getGrado());
+            gradoc.setNombreGrado(grado.getNombreGrado());
+            return new ResponseEntity(gradoc, HttpStatus.CREATED);
         }
     }
     
-    //listar cursos con paralelos
-    @RequestMapping(value= "/grado", method = RequestMethod.GET)
-    public ResponseEntity<Grado> listargradop(){
-        List<Grado> grad = gradoRep.allgrade();
-        return new ResponseEntity(grad, HttpStatus.OK);
+    //asignar un palalelo a un curso
+    @RequestMapping(value="/gradopadd", method = RequestMethod.POST)
+    public ResponseEntity <GradoParalelo> creargp(@RequestBody GradoParalelo gradoparalelo) throws SQLException{
+        GradoParalelo paralelogp = new GradoParalelo();
+        paralelogp.setIdGrado(gradoparalelo.getIdGrado());
+        paralelogp.setIdParalelo(gradoparalelo.getIdParalelo());
+        paralelogp = gradopRep.save(paralelogp);
+        return  new ResponseEntity(mensaje.add(), HttpStatus.CREATED);
+        
+        
     }
-    
-    
-    //crear un Curso
-    @RequestMapping(value="/gradoadd" , method = RequestMethod.POST)
-    public ResponseEntity<Grado>crearcurso(@RequestBody Grado grado)throws SQLException{
-        Grado gradoc = new Grado();
-        gradoc.setIdParalelo(grado.getIdParalelo());
-        gradoc.setGrado(grado.getGrado());
-        return new ResponseEntity(gradoc,HttpStatus.CREATED);    
-    }
-    
-    
 
 }

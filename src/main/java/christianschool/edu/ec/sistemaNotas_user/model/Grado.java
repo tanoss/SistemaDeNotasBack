@@ -29,13 +29,14 @@ public class Grado implements Serializable{
     @Column(name = "ID_GRADO")
     private Long idGrado;
 
-    @Column(name = "ID_PARALELO")
-    private Long idParalelo;
-
     @Basic(optional = false)
     @NotNull
     @Column(name = "GRADO")
     private Long grado;
+    
+    @Basic(optional = false)
+    @Column(name = "NOMBRE_GRADO")
+    private String nombreGrado;
 
     public Long getIdGrado() {
         return idGrado;
@@ -43,14 +44,6 @@ public class Grado implements Serializable{
 
     public void setIdGrado(Long idGrado) {
         this.idGrado = idGrado;
-    }
-
-    public Long getIdParalelo() {
-        return idParalelo;
-    }
-
-    public void setIdParalelo(Long idParalelo) {
-        this.idParalelo = idParalelo;
     }
 
     public Long getGrado() {
@@ -61,4 +54,13 @@ public class Grado implements Serializable{
         this.grado = grado;
     }
 
+    public String getNombreGrado() {
+        return nombreGrado;
+    }
+
+    public void setNombreGrado(String nombreGrado) {
+        this.nombreGrado = nombreGrado;
+    }
+
+    
 }

@@ -36,7 +36,7 @@ public class MateriaDocenteGrado implements Serializable {
     @Column(name = "ID_DOCENTE")
     private Long idDocente;
     
-    @Column(name = "ID_GRADO")
+    @Column(name = "ID_GRADO_PARALELO")
     private Long idGrado;
 
     public Long getIdMateriaDocenteGrado() {

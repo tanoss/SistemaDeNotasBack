@@ -5,7 +5,7 @@
  */
 package christianschool.edu.ec.sistemaNotas_user.dao;
 
-import christianschool.edu.ec.sistemaNotas_user.model.Grado;
+import christianschool.edu.ec.sistemaNotas_user.model.GradoParalelo;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,8 +14,8 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author willy
  */
-public interface GradoRepository extends CrudRepository <Grado, Long> {
-    @Query(value = "Select * from grado ", nativeQuery = true)
-    List<Grado> allgrade();
-    Grado findUserByGrado(Long nombre);
+public interface GradoParaleloRepository extends CrudRepository <GradoParalelo, Long> {
+    @Query(value="select * from grado_paralelo",nativeQuery=true)
+    List<GradoParalelo> allgradep();
+    
 }

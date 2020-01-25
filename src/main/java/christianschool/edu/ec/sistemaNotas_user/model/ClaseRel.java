@@ -31,9 +31,9 @@ public class ClaseRel implements Serializable{
     @Column(name = "ID_CLASE")
     private Long idClase;
 
-    @JoinColumn(name = "ID_MATRICULA", referencedColumnName = "ID_MATRICULA")
+    @JoinColumn(name = "ID_ESTUDIANTE", referencedColumnName = "ID_ESTUDIANTE")
     @ManyToOne(optional = false)
-    private Matricula matricula;
+    private Estudiante estudiante;
     
     @JoinColumn(name = "ID_MATERIA_DOCENTE_GRADO", referencedColumnName = "ID_MATERIA_DOCENTE_GRADO")
     @ManyToOne(optional = false)
@@ -47,13 +47,15 @@ public class ClaseRel implements Serializable{
         this.idClase = idClase;
     }
 
-    public Matricula getMatricula() {
-        return matricula;
+    public Estudiante getEstudiante() {
+        return estudiante;
     }
 
-    public void setMatricula(Matricula matricula) {
-        this.matricula = matricula;
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
     }
+
+   
 
     public MateriaDocenteGrado getMateriaDocenteGrado() {
         return materiaDocenteGrado;

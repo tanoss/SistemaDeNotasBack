@@ -31,8 +31,8 @@ public class Clase implements Serializable{
     @Column(name = "ID_CLASE")
     private Long idClase;
 
-    @Column(name = "ID_MATRICULA")
-    private Long idMatricula;
+    @Column(name = "ID_ESTUDIANTE")
+    private Long idEstudiante;
 
     @Column(name = "ID_MATERIA_DOCENTE_GRADO")
     private Long idMateriaDocenteGrado;
@@ -45,13 +45,15 @@ public class Clase implements Serializable{
         this.idClase = idClase;
     }
 
-    public Long getIdMatricula() {
-        return idMatricula;
+    public Long getIdEstudiante() {
+        return idEstudiante;
     }
 
-    public void setIdMatricula(Long idMatricula) {
-        this.idMatricula = idMatricula;
+    public void setIdEstudiante(Long idEstudiante) {
+        this.idEstudiante = idEstudiante;
     }
+
+    
 
     public Long getIdMateriaDocenteGrado() {
         return idMateriaDocenteGrado;
