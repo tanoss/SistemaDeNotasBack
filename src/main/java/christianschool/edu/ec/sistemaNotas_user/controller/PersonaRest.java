@@ -57,7 +57,7 @@ public class PersonaRest {
         // userexist = usuarioRep.findUserByusuCc(usuario.getUsuCc());
         userexist = personaRep.findUserByCedula(persona.getCedula());
         if (userexist != null) {
-            return new ResponseEntity(msg.ifexist(), HttpStatus.CREATED);
+            return new ResponseEntity("error ya existe", HttpStatus.CREATED);
         } else {
             Persona user = new Persona();
 

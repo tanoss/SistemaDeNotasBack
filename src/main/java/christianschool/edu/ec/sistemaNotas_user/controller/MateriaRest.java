@@ -103,7 +103,8 @@ public class MateriaRest {
             Grado gradoc = new Grado();
             gradoc.setGrado(grado.getGrado());
             gradoc.setNombreGrado(grado.getNombreGrado());
-            return new ResponseEntity(gradoc, HttpStatus.CREATED);
+            gradoc = gradoRep.save(gradoc);
+            return new ResponseEntity(mensaje.add(), HttpStatus.CREATED);
         }
     }
     
@@ -114,9 +115,7 @@ public class MateriaRest {
         paralelogp.setIdGrado(gradoparalelo.getIdGrado());
         paralelogp.setIdParalelo(gradoparalelo.getIdParalelo());
         paralelogp = gradopRep.save(paralelogp);
-        return  new ResponseEntity(mensaje.add(), HttpStatus.CREATED);
-        
-        
+        return  new ResponseEntity(mensaje.add(), HttpStatus.CREATED);   
     }
 
 }
