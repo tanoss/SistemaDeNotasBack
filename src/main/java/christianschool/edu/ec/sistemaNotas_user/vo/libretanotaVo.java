@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class libretanotaVo {
 
+    //inner trae las materia y notas que da un profesor a un estuciante
     private static String opciones = " from libreta l"
             + " inner join clase c on l.id_clase = c.id_clase"
             + " inner join materia_docente_grado mdg on c.id_materia_docente_grado= mdg.id_materia_docente_grado"
@@ -27,18 +28,32 @@ public class libretanotaVo {
             + " inner join estudiante e on c.id_estudiante = e.id_estudiante"
             + " inner join persona p on e.id_persona = p.id_persona ";
 
-    private static String usuarioperfil = " from siseac.seg_usuario_ldap u"
-            + " join siseac.seg_usu_perfil_ldap up on up.usu_id=u.usu_id"
-            + " join siseac.seg_perfil p on p.per_id=up.per_id"
-            + " join siseac.seg_sistemas s on s.sis_id=p.sis_id";
+    private static String notasp = " from materia_docente_grado mdg"
+            + " inner join docente d on mdg.id_docente = d.id_docente"
+            + " inner join grado_paralelo gp on mdg.id_grado_paralelo = gp.id_grado_paralelo"
+            + " inner join grado g on gp.id_grado = g.id_grado"
+            + " inner join paralelo pl on gp.id_paralelo = pl.id_paralelo"
+            + " inner join persona p on d.id_persona = p.id_persona";
 
-    private static String usuariossistemas = " from SISEAC.seg_usuario_ldap ul "
-            + " INNER JOIN SISEAC.seg_usu_perfil_ldap up ON  "
-            + " ul.usu_id  = up.usu_id "
-            + " INNER JOIN SISEAC.seg_perfil p ON  "
-            + " up.per_id  = p.per_id "
-            + " INNER JOIN SISEAC.seg_sistemas s ON  "
-            + " p.sis_id = s.sis_id ";
+    private static String libretae = " from materia_docente_grado mdg"
+            + " inner join materia m on mdg.id_materia = m.id_materia"
+            + " inner join docente d on mdg.id_docente = d.id_docente"
+            + " inner join grado_paralelo gp on mdg.id_grado_paralelo = gp.id_grado_paralelo"
+            + " inner join grado g on gp.id_grado = g.id_grado"
+            + " inner join paralelo pl on gp.id_paralelo = pl.id_paralelo"
+            + " inner join persona p on d.id_persona = p.id_persona ";
+
+    //inner para traer los estudiante que sigen esa materia con ese profesor en ese curso
+    private static String libretaestudinate = " from libreta l"
+            + " inner join clase c on l.id_clase = c.id_clase"
+            + " inner join estudiante e on c.id_estudiante = e.id_estudiante"
+            + " inner join persona p on e.id_persona = p.id_persona"
+            + " inner join materia_docente_grado mdg on c.id_materia_docente_grado = mdg.id_materia_docente_grado"
+            + " inner join materia m on mdg.id_materia = m.id_materia"
+            + " inner join docente d on mdg.id_docente  = d.id_docente\n"
+            + " inner join grado_paralelo gp on mdg.id_grado_paralelo = gp.id_grado_paralelo"
+            + " inner join grado g on gp.id_grado = g.id_grado"
+            + " inner join paralelo pa on gp.id_paralelo = pa.id_paralelo ";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -47,5 +62,23 @@ public class libretanotaVo {
         String opcion = "select materia,id_libreta,l.id_clase, id_periodo_lectivo, nota_quimestre_uno, nota_quimestre_dos,promedio_final";
         return jdbcTemplate.query(opcion + opciones + q, new BeanPropertyRowMapper<>(libretaVo.class));
     }
+
+    public List<libretapVo> getLibretap(String q) throws SQLException {
+        String opcion1 = "select gp.id_grado_paralelo,  g.nombre_grado, pl.paralelo ";
+        return jdbcTemplate.query(opcion1 + notasp + q, new BeanPropertyRowMapper<>(libretapVo.class));
+    }
+
+    public List<libretamVo> getLibretam(String q) throws SQLException {
+        String opcion2 = "select m.id_materia, m.materia,gp.id_grado_paralelo,d.id_docente ";
+        return jdbcTemplate.query(opcion2 + libretae + q, new BeanPropertyRowMapper<>(libretamVo.class));
+    }
+    
+    //trae los inners de libreta estudiante
+     public List<libretaeVo> getLibretaestudiante(String q) throws SQLException {
+        String opcion3 = "select p.nombre, p.apellido, l.nota_quimestre_uno, l.nota_quimestre_dos, l.promedio_final,l.id_libreta,l.id_clase,l.id_periodo_lectivo ";
+        return jdbcTemplate.query(opcion3 + libretaestudinate + q, new BeanPropertyRowMapper<>(libretaeVo.class));
+    }
+    
+   
 
 }

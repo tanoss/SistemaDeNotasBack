@@ -134,5 +134,7 @@ public class MateriaRest {
         paralelogp = gradopRep.save(paralelogp);
         return new ResponseEntity(mensaje.add(), HttpStatus.CREATED);
     }
+    
+    
 
 }

@@ -37,12 +37,12 @@ public class Libreta implements Serializable {
     private Long idPeriodoLectivo;
     
     @NotNull
-    @Column(name = "NOTA_QUIMESTRE_1")
-    private Float notaQuimestre1;
+    @Column(name = "NOTA_QUIMESTRE_UNO")
+    private Float notaQuimestreUno;
     
     @NotNull
-    @Column(name = "NOTA_QUIMESTRE_2")
-    private Float notaQuimestre2;
+    @Column(name = "NOTA_QUIMESTRE_DOS")
+    private Float notaQuimestreDos;
     
     @NotNull
     @Column(name = "PROMEDIO_FINAL")
@@ -72,20 +72,20 @@ public class Libreta implements Serializable {
         this.idPeriodoLectivo = idPeriodoLectivo;
     }
 
-    public Float getNotaQuimestre1() {
-        return notaQuimestre1;
+    public Float getNotaQuimestreUno() {
+        return notaQuimestreUno;
     }
 
-    public void setNotaQuimestre1(Float notaQuimestre1) {
-        this.notaQuimestre1 = notaQuimestre1;
+    public void setNotaQuimestre1(Float notaQuimestreUno) {
+        this.notaQuimestreUno = notaQuimestreUno;
     }
 
-    public Float getNotaQuimestre2() {
-        return notaQuimestre2;
+    public Float getNotaQuimestreDos() {
+        return notaQuimestreDos;
     }
 
-    public void setNotaQuimestre2(Float notaQuimestre2) {
-        this.notaQuimestre2 = notaQuimestre2;
+    public void setNotaQuimestreDos(Float notaQuimestreDos) {
+        this.notaQuimestreDos = notaQuimestreDos;
     }
 
     public Float getPromedioFinal() {
