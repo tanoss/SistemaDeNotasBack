@@ -23,4 +23,7 @@ public interface PersonaRepository extends CrudRepository<Persona, Long> {
     List<Persona> findallestudents();
     @Query(value = "select * from persona where id_tipo_usuario=2 order by nombre", nativeQuery = true)
     List<Persona> findallprofesores();
+    @Query(value = "select p.nombre,d.id_docente from docente d  inner join persona p on d.id_persona = p.id_persona where p.id_tipo_usuario =2 ", nativeQuery = true)
+    List<Persona> findallprofid();
+    
 }

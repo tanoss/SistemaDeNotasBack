@@ -97,6 +97,17 @@ public class PersonaRest {
    return new ResponseEntity(estudiantes, HttpStatus.OK);
   }
  }
+ 
+ 
+  @RequestMapping(value = "/allprofid", method = RequestMethod.GET)
+ public ResponseEntity<Persona> listaporfid() {
+  List<Persona> estudiantes = personaRep.findallprofid();
+  if (estudiantes.isEmpty()) {
+   return new ResponseEntity(msg.notfound(), HttpStatus.OK);
+  } else {
+   return new ResponseEntity(estudiantes, HttpStatus.OK);
+  }
+ }
     
     //Funcion devuelve el rol del usuario
     

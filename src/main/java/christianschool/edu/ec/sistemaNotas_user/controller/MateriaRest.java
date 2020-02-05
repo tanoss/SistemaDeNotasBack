@@ -8,10 +8,12 @@ package christianschool.edu.ec.sistemaNotas_user.controller;
 import christianschool.edu.ec.sistemaNotas_user.dao.GradoParaleloRepository;
 import christianschool.edu.ec.sistemaNotas_user.dao.GradoParaleloRepositoryRel;
 import christianschool.edu.ec.sistemaNotas_user.dao.GradoRepository;
+import christianschool.edu.ec.sistemaNotas_user.dao.MateriaRepository;
 import christianschool.edu.ec.sistemaNotas_user.dao.ParaleloRepository;
 import christianschool.edu.ec.sistemaNotas_user.model.Grado;
 import christianschool.edu.ec.sistemaNotas_user.model.GradoParalelo;
 import christianschool.edu.ec.sistemaNotas_user.model.GradoParaleloRel;
+import christianschool.edu.ec.sistemaNotas_user.model.Materia;
 import christianschool.edu.ec.sistemaNotas_user.model.Paralelo;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +49,19 @@ public class MateriaRest {
 
     @Autowired
     private GradoParaleloRepositoryRel gradopRepRel;
+    
+    @Autowired
+    private MateriaRepository materiaRep;
+    //listar materias
+    @RequestMapping(value = "/materias", method = RequestMethod.GET)
+    public ResponseEntity<Materia> listamateria() {
+        List<Materia> materias = materiaRep.findallMateria();
+        if (materias.isEmpty()) {
+            return new ResponseEntity(mensaje.notfound(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity(materias, HttpStatus.OK);
+        }
+    }
 
     //listar paralelelos
     @RequestMapping(value = "/paralelo", method = RequestMethod.GET)

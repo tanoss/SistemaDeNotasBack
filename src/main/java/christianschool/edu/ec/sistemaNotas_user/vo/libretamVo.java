@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class libretamVo implements Serializable  {
     
      private static final long serialVersionUID = 1L;
+     private int idMateriaDocenteGrado;
       private int idMateria;
       private  String materia;
       private int idDocente;
@@ -22,11 +23,20 @@ public class libretamVo implements Serializable  {
     public libretamVo() {
     }
 
-    public libretamVo(int idMateria, String materia, int idDocente, int idGradoParalelo) {
+    public libretamVo(int idMateriaDocenteGrado, int idMateria, String materia, int idDocente, int idGradoParalelo) {
+        this.idMateriaDocenteGrado = idMateriaDocenteGrado;
         this.idMateria = idMateria;
         this.materia = materia;
         this.idDocente = idDocente;
         this.idGradoParalelo = idGradoParalelo;
+    }
+
+    public int getIdMateriaDocenteGrado() {
+        return idMateriaDocenteGrado;
+    }
+
+    public void setIdMateriaDocenteGrado(int idMateriaDocenteGrado) {
+        this.idMateriaDocenteGrado = idMateriaDocenteGrado;
     }
 
     public int getIdMateria() {
@@ -60,7 +70,7 @@ public class libretamVo implements Serializable  {
     public void setIdGradoParalelo(int idGradoParalelo) {
         this.idGradoParalelo = idGradoParalelo;
     }
-    
+
     
 
   

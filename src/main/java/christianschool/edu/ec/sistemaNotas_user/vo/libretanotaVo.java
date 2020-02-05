@@ -55,6 +55,12 @@ public class libretanotaVo {
             + " inner join grado g on gp.id_grado = g.id_grado"
             + " inner join paralelo pa on gp.id_paralelo = pa.id_paralelo ";
 
+    private static String profesorid = " from docente d "
+            + "inner join persona p on d.id_persona = p.id_persona ";
+    //trae los id de los estudiantes
+    private static String estudianteid = " from estudiante d "
+            + " inner join persona p on d.id_persona = p.id_persona ";
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -69,16 +75,24 @@ public class libretanotaVo {
     }
 
     public List<libretamVo> getLibretam(String q) throws SQLException {
-        String opcion2 = "select m.id_materia, m.materia,gp.id_grado_paralelo,d.id_docente ";
+        String opcion2 = " select mdg.id_materia_docente_grado, m.id_materia, m.materia,gp.id_grado_paralelo,d.id_docente ";
         return jdbcTemplate.query(opcion2 + libretae + q, new BeanPropertyRowMapper<>(libretamVo.class));
     }
-    
+
     //trae los inners de libreta estudiante
-     public List<libretaeVo> getLibretaestudiante(String q) throws SQLException {
+    public List<libretaeVo> getLibretaestudiante(String q) throws SQLException {
         String opcion3 = "select p.nombre, p.apellido, l.nota_quimestre_uno, l.nota_quimestre_dos, l.promedio_final,l.id_libreta,l.id_clase,l.id_periodo_lectivo ";
         return jdbcTemplate.query(opcion3 + libretaestudinate + q, new BeanPropertyRowMapper<>(libretaeVo.class));
     }
-    
-   
 
+    //trae los id de los docentes
+    public List<profesorVo> getdocentesid(String q) throws SQLException {
+        String opcion4 = "select p.nombre, p.apellido,d.id_docente ";
+        return jdbcTemplate.query(opcion4 + profesorid + q, new BeanPropertyRowMapper<>(profesorVo.class));
+    }
+    //trae los id de los estudiantes
+     public List<estudianteVo> getestudiantesid(String q) throws SQLException {
+        String opcion5 = "select p.nombre, p.apellido,d.id_estudiante ";
+        return jdbcTemplate.query(opcion5 + estudianteid + q, new BeanPropertyRowMapper<>(estudianteVo.class));
+    }
 }
