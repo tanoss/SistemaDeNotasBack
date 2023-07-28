@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.1.3.RELEASE'
     id 'java'
+    id 'org.sonarqube' version '3.9.0.2155'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -16,6 +17,14 @@ repositories {
     mavenCentral()
     mavenLocal()
    
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectName', 'tess'
+        property 'sonar.projectKey', '2asdd87a'
+        // Otras propiedades de configuración de SonarQube, si es necesario
+    }
 }
 
 dependencies {
