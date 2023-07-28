@@ -8,7 +8,7 @@ pipeline {
       steps {
         withSonarQubeEnv(installationName: 'sonarTest') { 
           sh 'chmod +x gradlew'
-          sh './gradlew clean sonarqube'
+          sh './gradlew clean sonar'
         }
       }
     }
